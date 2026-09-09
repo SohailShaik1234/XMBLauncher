@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="XMBLauncher.Views.XmbView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Focusable="True"
+             Loaded="XmbView_Loaded"
+             KeyDown="XmbView_KeyDown">
+
+    <Grid>
+
+     
+        <MediaElement x:Name="BackgroundVideo"
+                      Source="Assets/Images/Background.mp4"
+                      Stretch="UniformToFill"
+                      LoadedBehavior="Manual"
+                      UnloadedBehavior="Manual"
+                      IsMuted="True"
+                      Opacity="0.55"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      MediaOpened="BackgroundVideo_MediaOpened"
+                      MediaFailed="BackgroundVideo_MediaFailed"
+                      MediaEnded="BackgroundVideo_MediaEnded"/>
+
+
+        <Rectangle Fill="#020914"
+                   Opacity="0.35"
+                   IsHitTestVisible="False"/>
+
+
+       
+
+        <Ellipse Width="850"
+                 Height="850"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Margin="0,100,0,0"
+                 Opacity="0.18">
+
+            <Ellipse.Fill>
+
+                <RadialGradientBrush>
+
+                    <GradientStop Color="#66C7FF"
+                                  Offset="0"/>
+
+                    <GradientStop Color="#1E5A82"
+                                  Offset="0.35"/>
+
+                    <GradientStop Color="Transparent"
+                                  Offset="1"/>
+
+                </RadialGradientBrush>
+
+            </Ellipse.Fill>
+
+        </Ellipse>
+
+
+
+        <Canvas IsHitTestVisible="False">
+
+            <Path Data="
+                    M 0,700
+                    C 300,560 450,560 700,670
+                    C 1000,805 1250,790 1550,620
+                    C 1700,535 1840,510 1920,520"
+                  Stroke="White"
+                  StrokeThickness="2"
+                  Opacity="0.14"
+                  Fill="Transparent"/>
+
+
+            <Path Data="
+                    M 0,770
+                    C 280,620 470,625 720,735
+                    C 1000,860 1250,845 1530,675
+                    C 1700,575 1840,555 1920,565"
+                  Stroke="White"
+                  StrokeThickness="2"
+                  Opacity="0.10"
+                  Fill="Transparent"/>
+
+
+            <Path Data="
+                    M 0,835
+                    C 280,695 480,700 720,800
+                    C 1000,920 1250,900 1510,740
+                    C 1690,630 1840,615 1920,625"
+                  Stroke="White"
+                  StrokeThickness="2"
+                  Opacity="0.07"
+                  Fill="Transparent"/>
+
+        </Canvas>
+
+
+
+        
+
+
+        <Canvas x:Name="CategoryGrid"
+                Width="500"
+                Height="190"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="0,190,0,0">
+
+            <Canvas.RenderTransform>
+
+                <TransformGroup>
+
+                    <ScaleTransform x:Name="CategoryGridScale"
+                                    ScaleX="1"
+                                    ScaleY="1"/>
+
+                    <TranslateTransform x:Name="CategoryGridTranslate"
+                                        X="0"
+                                        Y="0"/>
+
+                </TransformGroup>
+
+            </Canvas.RenderTransform>
+
+        </Canvas>
+
+
+
+        <Canvas x:Name="GameCanvas"
+                Width="500"
+                Height="900"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="0,190,0,0">
+
+            <Canvas.RenderTransform>
+
+                <TransformGroup>
+
+                    <ScaleTransform x:Name="GameCanvasScale"
+                                    ScaleX="1"
+                                    ScaleY="1"/>
+
+                    <TranslateTransform x:Name="GameCanvasTranslate"
+                                        X="0"
+                                        Y="0"/>
+
+                </TransformGroup>
+
+            </Canvas.RenderTransform>
+
+        </Canvas>
+
+
+
+        <StackPanel x:Name="SelectedGameInfo"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="360"
+            Margin="1320,380,0,0">
+
+            <TextBlock x:Name="SelectedGameText"
+               Text=""
+               Foreground="White"
+               FontSize="30"
+               FontWeight="Light"
+               TextWrapping="Wrap"
+               Margin="0,0,0,8"/>
+
+            <TextBlock x:Name="SelectedGameDeveloper"
+               Text=""
+               Foreground="#B7D2E5"
+               FontSize="16"
+               FontWeight="Light"
+               TextWrapping="Wrap"
+               Margin="0,0,0,5"/>
+
+            <TextBlock x:Name="SelectedGameGenre"
+               Text=""
+               Foreground="#8FB4CC"
+               FontSize="14"
+               FontWeight="Light"
+               TextWrapping="Wrap"
+               Margin="0,0,0,10"/>
+
+            <TextBlock x:Name="SelectedGamePlaytime"
+               Text=""
+               Foreground="#A8C5D8"
+               FontSize="13"
+               FontWeight="Light"
+               Margin="0,0,0,4"/>
+
+            <TextBlock x:Name="SelectedGameLaunchCount"
+               Text=""
+               Foreground="#A8C5D8"
+               FontSize="13"
+               FontWeight="Light"
+               Margin="0,0,0,4"/>
+
+            <TextBlock x:Name="SelectedGameLastPlayed"
+               Text=""
+               Foreground="#A8C5D8"
+               FontSize="13"
+               FontWeight="Light"/>
+        </StackPanel>
+
+
+
+
+        <TextBlock Text="↑ ↓ Select Game     ← → Select Category     Enter Launch     I Import     Delete Remove     Esc Back"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="0,0,0,28"
+                   Foreground="#A8C5D8"
+                   FontSize="13"
+                   FontWeight="Light"
+                   Opacity="0.75"/>
+
+    </Grid>
+
+</UserControl>

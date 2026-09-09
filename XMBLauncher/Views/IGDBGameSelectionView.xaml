@@ -1,0 +1,219 @@
+﻿<Window x:Class="XMBLauncher.Views.IGDBGameSelectionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select Game"
+        Width="1000"
+        Height="700"
+        WindowStartupLocation="CenterOwner"
+        Background="#071522"
+        Foreground="White"
+        WindowStyle="SingleBorderWindow">
+
+    <Grid Margin="35">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+
+        <TextBlock Text="SELECT GAME"
+                   FontSize="30"
+                   FontWeight="Light"
+                   Foreground="White"/>
+
+
+       
+
+        <StackPanel Grid.Row="1"
+                    Margin="0,10,0,15">
+
+            <TextBlock x:Name="SearchText"
+                       FontSize="16"
+                       Foreground="#9AB6CC"/>
+
+            <TextBlock x:Name="ResultCountText"
+                       FontSize="13"
+                       Foreground="#607F96"
+                       Margin="0,4,0,0"/>
+
+        </StackPanel>
+
+
+     
+
+        <Grid Grid.Row="2"
+              Margin="0,0,0,20">
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="120"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <TextBox x:Name="ManualSearchTextBox"
+                     Height="40"
+                     Padding="10"
+                     FontSize="15"
+                     Background="#10283C"
+                     Foreground="White"
+                     BorderBrush="#345A73"
+                     TextChanged="ManualSearchTextBox_TextChanged"/>
+
+
+            <Button Grid.Column="1"
+                    Content="SEARCH"
+                    Width="110"
+                    Height="40"
+                    Margin="10,0,0,0"
+                    Click="SearchButton_Click"/>
+
+        </Grid>
+
+
+        <ScrollViewer Grid.Row="3"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+
+            <ItemsControl x:Name="ResultsList">
+
+                <ItemsControl.ItemsPanel>
+
+                    <ItemsPanelTemplate>
+
+                        <StackPanel/>
+
+                    </ItemsPanelTemplate>
+
+                </ItemsControl.ItemsPanel>
+
+
+                <ItemsControl.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Border Margin="0,0,0,12"
+                                Padding="12"
+                                Background="#0D2436"
+                                BorderBrush="#24475F"
+                                BorderThickness="1"
+                                CornerRadius="4">
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="110"/>
+
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+
+
+
+                                <Border Width="90"
+                                        Height="120"
+                                        Background="#17344D"
+                                        HorizontalAlignment="Left">
+
+                                    <Image Source="{Binding CoverUrl}"
+                                           Stretch="UniformToFill"/>
+
+                                </Border>
+
+
+
+                                <StackPanel Grid.Column="1"
+                                            Margin="20,5,10,5">
+
+                                    <TextBlock Text="{Binding Name}"
+                                               FontSize="21"
+                                               Foreground="White"
+                                               TextWrapping="Wrap"/>
+
+
+                                    <TextBlock Text="{Binding Developer}"
+                                               FontSize="14"
+                                               Foreground="#9AB6CC"
+                                               Margin="0,7,0,0"/>
+
+
+                                    <TextBlock Text="{Binding Genre}"
+                                               FontSize="13"
+                                               Foreground="#7898B2"
+                                               Margin="0,3,0,0"/>
+
+
+                                    <TextBlock Text="{Binding FirstReleaseDate}"
+                                               FontSize="13"
+                                               Foreground="#7898B2"
+                                               Margin="0,3,0,0"/>
+
+
+                                    <TextBlock Text="{Binding Summary}"
+                                               FontSize="12"
+                                               Foreground="#607F96"
+                                               TextWrapping="Wrap"
+                                               MaxHeight="45"
+                                               Margin="0,8,0,0"/>
+
+
+                                    <Button Content="SELECT"
+                                            Width="90"
+                                            Height="30"
+                                            HorizontalAlignment="Left"
+                                            Margin="0,10,0,0"
+                                            Click="SelectButton_Click"/>
+
+                                </StackPanel>
+
+                            </Grid>
+
+                        </Border>
+
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </ScrollViewer>
+
+
+
+        <Grid Grid.Row="4"
+              Margin="0,20,0,0">
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="Auto"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Text="Can't find the correct game? Search above."
+                       VerticalAlignment="Center"
+                       Foreground="#607F96"
+                       FontSize="13"/>
+
+
+            <Button Grid.Column="1"
+                    Content="Cancel"
+                    Width="100"
+                    Height="40"
+                    Click="CancelButton_Click"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

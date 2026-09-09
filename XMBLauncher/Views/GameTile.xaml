@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="XMBLauncher.Views.GameTile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform x:Name="TileScale"
+                            ScaleX="1"
+                            ScaleY="1"/>
+            <TranslateTransform x:Name="TileTranslate"
+                                X="0"
+                                Y="0"/>
+        </TransformGroup>
+    </UserControl.RenderTransform>
+
+    <Grid Width="280"
+          Height="230">
+
+        <!-- GLOW -->
+        <Border x:Name="Glow"
+                Width="235"
+                Height="235"
+                CornerRadius="117.5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Opacity="0">
+            <Border.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#A9DFFF"
+                                  Offset="0"/>
+                    <GradientStop Color="#4A91C2"
+                                  Offset="0.35"/>
+                    <GradientStop Color="Transparent"
+                                  Offset="1"/>
+                </RadialGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <!-- GAME COVER -->
+        <Border x:Name="CoverBorder"
+                Width="190"
+                Height="190"
+                CornerRadius="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="#102C42">
+
+            <Grid>
+
+                <Image Source="{Binding CoverPath}"
+                       Stretch="UniformToFill"/>
+
+                <!-- FALLBACK WHEN THERE IS NO COVER -->
+                <Border Background="#173A53">
+                    <Border.Style>
+                        <Style TargetType="Border">
+
+                            <Setter Property="Visibility"
+                                    Value="Collapsed"/>
+
+                            <Style.Triggers>
+
+                                <DataTrigger Binding="{Binding CoverPath}"
+                                             Value="">
+                                    <Setter Property="Visibility"
+                                            Value="Visible"/>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding CoverPath}"
+                                             Value="{x:Null}">
+                                    <Setter Property="Visibility"
+                                            Value="Visible"/>
+                                </DataTrigger>
+
+                            </Style.Triggers>
+
+                        </Style>
+                    </Border.Style>
+
+                    <TextBlock Text="{Binding Name}"
+                               Foreground="#E8F5FF"
+                               FontSize="20"
+                               FontWeight="Light"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="15"/>
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+        <!-- GAME NAME -->
+        <TextBlock Text="{Binding Name}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="10,0,10,2"
+                   Foreground="#B7D2E5"
+                   FontSize="13"
+                   TextAlignment="Center"
+                   TextTrimming="CharacterEllipsis"
+                   Opacity="0.75"/>
+
+    </Grid>
+
+</UserControl>
